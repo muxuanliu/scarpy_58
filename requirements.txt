@@ -1,0 +1,12 @@
+chardet==5.2.0
+itemadapter==0.7.0
+jieba==0.42.1
+matplotlib==3.5.1
+numpy==1.24.4
+pandas==1.4.4
+PyMySQL==1.0.2
+scikit_learn==1.1.2
+Scrapy==2.7.1
+tensorflow==2.16.1
+tensorflow_intel==2.16.1
+wordcloud==1.8.1
