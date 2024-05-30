@@ -9,6 +9,12 @@
 
 BOT_NAME = 'data_58'
 
+DOWNLOADER_MIDDLEWARES = {
+    'data_58.middlewares.DontRedirectMiddleware': 543,
+}
+
+HTTPERROR_ALLOWED_CODES = [301,302]
+
 SPIDER_MODULES = ['data_58.spiders']
 NEWSPIDER_MODULE = 'data_58.spiders'
 

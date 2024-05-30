@@ -3,10 +3,20 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-from scrapy import signals
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
+
+from scrapy import signals
+from scrapy.http import HtmlResponse
+
+class DontRedirectMiddleware:
+    def process_response(self, request, response, spider):
+        # 如果响应是重定向，返回原始请求的响应而不是跟随重定向
+        if response.status in [301, 302]:
+            return HtmlResponse(url=request.url, body=response.body, encoding=response.encoding, status=response.status)
+        return response
+
 
 
 class Data58SpiderMiddleware:
@@ -101,3 +111,5 @@ class Data58DownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
